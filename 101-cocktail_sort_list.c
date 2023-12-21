@@ -16,21 +16,21 @@ void cocktail_sort_list(listint_t **list);
  */
 void swap_node_ahead(listint_t **list, listint_t **tail, listint_t **shaker)
 {
-	listint_t *temp = (*shaker)->next;
+	listint_t *tmpo = (*shaker)->next;
 
 	if ((*shaker)->prev != NULL)
-		(*shaker)->prev->next = temp;
+		(*shaker)->prev->next = tmpo;
 	else
-		*list = temp;
-	temp->prev = (*shaker)->prev;
-	(*shaker)->next = temp->next;
-	if (temp->next != NULL)
-		temp->next->prev = *shaker;
+		*list = tmpo;
+	tmpo->prev = (*shaker)->prev;
+	(*shaker)->next = tmpo->next;
+	if (tmpo->next != NULL)
+		tmpo->next->prev = *shaker;
 	else
 		*tail = *shaker;
-	(*shaker)->prev = temp;
-	temp->next = *shaker;
-	*shaker = temp;
+	(*shaker)->prev = tmpo;
+	tmpo->next = *shaker;
+	*shaker = tmpo;
 }
 
 /**
@@ -45,21 +45,21 @@ void swap_node_ahead(listint_t **list, listint_t **tail, listint_t **shaker)
  */
 void swap_node_behind(listint_t **list, listint_t **tail, listint_t **shaker)
 {
-	listint_t *temp = (*shaker)->prev;
+	listint_t *tmpo = (*shaker)->prev;
 
 	if ((*shaker)->next != NULL)
-		(*shaker)->next->prev = temp;
+		(*shaker)->next->prev = tmpo;
 	else
-		*tail = temp;
-	temp->next = (*shaker)->next;
-	(*shaker)->prev = temp->prev;
-	if (temp->prev != NULL)
-		temp->prev->next = *shaker;
+		*tail = tmpo;
+	tmpo->next = (*shaker)->next;
+	(*shaker)->prev = tmpo->prev;
+	if (tmpo->prev != NULL)
+		tmpo->prev->next = *shaker;
 	else
 		*list = *shaker;
-	(*shaker)->next = temp;
-	temp->prev = *shaker;
-	*shaker = temp;
+	(*shaker)->next = tmpo;
+	tmpo->prev = *shaker;
+	*shaker = tmpo;
 }
 
 /**
